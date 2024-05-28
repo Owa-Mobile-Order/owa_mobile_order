@@ -13,7 +13,8 @@ const LeftMenu = () => {
     <>
       <Box
         backgroundColor={'#ffffff'}
-        width={'252px'}
+        width={'300px'}
+        p={"24px"}
         height={'100vh'}
         opacity={isOpen ? 1 : 0}
         position={'fixed'}
