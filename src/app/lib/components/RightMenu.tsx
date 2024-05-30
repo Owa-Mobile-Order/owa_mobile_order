@@ -1,8 +1,9 @@
 import { Box, IconButton } from '@chakra-ui/react'
-import { HamburgerIcon, Icon } from '@chakra-ui/icons'
+import { Icon } from '@chakra-ui/icons'
 import React, { useState } from 'react'
+import { BsCart } from 'react-icons/bs'
 
-const LeftMenu = () => {
+const RightMenu = () => {
   const [isOpen, setOpen] = useState(false)
 
   const toggleOpen = () => {
@@ -20,13 +21,13 @@ const LeftMenu = () => {
         position={'fixed'}
         zIndex={10000}
         visibility={isOpen ? 'visible' : 'hidden'}
-        left={isOpen ? 0 : '-300px'}
+        right={isOpen ? 0 : '-300px'}
         top={0}
         transition={'0.4s'}
       ></Box>
       <Box
         top={0}
-        left={0}
+        right={0}
         backgroundColor={'#000000'}
         opacity={isOpen ? 0.5 : 0}
         width={'100vw'}
@@ -40,15 +41,14 @@ const LeftMenu = () => {
 
       {/*メニューのボタン*/}
       <IconButton
+        aria-label={'カート'}
         my={'auto'}
-        mx={'10px'}
         backgroundColor={'rgba(0,0,0,0)'}
-        aria-label="メニュー"
-        icon={<Icon as={HamburgerIcon} boxSize={6} />}
+        icon={<Icon as={BsCart} boxSize={6} />}
         onClick={toggleOpen}
       />
     </>
   )
 }
 
-export { LeftMenu }
+export { RightMenu }
