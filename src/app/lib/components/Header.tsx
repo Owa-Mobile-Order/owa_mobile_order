@@ -7,7 +7,7 @@ import { Login } from './auth/Login'
 import { Logout } from './auth/Logout'
 
 const Header = () => {
-  const { data: session, status } = useSession();
+  const { data: _session, status } = useSession()
   return (
     <Box height={'64px'} px={'20px'} display={'flex'}>
       <LeftMenu />
@@ -18,7 +18,7 @@ const Header = () => {
       <Spacer />
       <RightMenu />
       <Box my={'auto'} mx={'10px'}>
-      {status !== 'authenticated' ? <Login /> : <Logout />}
+        {status !== 'authenticated' ? <Login /> : <Logout />}
       </Box>
     </Box>
   )

@@ -3,7 +3,7 @@ import { useSession, signIn } from 'next-auth/react'
 import { Button } from '@chakra-ui/react'
 
 const Login = () => {
-  const { data: session, status } = useSession()
+  const { data: _session, status } = useSession()
 
   if (status !== 'authenticated') {
     return (
