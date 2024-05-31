@@ -1,9 +1,13 @@
-import { Box, IconButton } from '@chakra-ui/react'
+import { Box, IconButton, Text } from '@chakra-ui/react'
 import { HamburgerIcon, Icon } from '@chakra-ui/icons'
 import React, { useState } from 'react'
+import { useSession } from 'next-auth/react'
+import { LoginMenu } from './left_menu/LoginMenu'
+import { LogoutMenu } from './left_menu/LogoutMenu'
 
 const LeftMenu = () => {
-  const [isOpen, setOpen] = useState(false)
+  const { data: _session, status } = useSession()
+  const [isOpen, setOpen] = useState(true)
 
   const toggleOpen = () => {
     setOpen(!isOpen)
@@ -23,7 +27,9 @@ const LeftMenu = () => {
         left={isOpen ? 0 : '-300px'}
         top={0}
         transition={'0.4s'}
-      ></Box>
+      >
+        {status === 'authenticated' ? <LoginMenu /> : <LogoutMenu />}
+      </Box>
       <Box
         top={0}
         left={0}
