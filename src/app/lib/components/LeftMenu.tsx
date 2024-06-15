@@ -1,4 +1,4 @@
-import { Box, IconButton, Text } from '@chakra-ui/react'
+import { Box, IconButton } from '@chakra-ui/react'
 import { HamburgerIcon, Icon } from '@chakra-ui/icons'
 import React, { useState } from 'react'
 import { useSession } from 'next-auth/react'
