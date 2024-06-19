@@ -29,8 +29,8 @@ export default models['Menu']
 
 /*
 {
-  name: "カレーライス",
-  price: 300,
-  img: "https://www.kaigo-antenna.jp/uploads/illustration/main_image/815/202107_035_s.jpg"
+  "name": "カレーライス",
+  "price": 300,
+  "img": "https://www.kaigo-antenna.jp/uploads/illustration/main_image/815/202107_035_s.jpg"
 }
 */
