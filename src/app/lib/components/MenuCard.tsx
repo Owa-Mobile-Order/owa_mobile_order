@@ -25,7 +25,7 @@ const MenuCard = ({
   img: string;
 }) => {
   return (
-    <Card maxW="sm">
+    <Card maxW="sm" m={'20px'}>
       <CardBody>
         <Image
           src={img}
