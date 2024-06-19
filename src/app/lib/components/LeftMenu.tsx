@@ -1,7 +1,7 @@
 import {
-  Box,
   Drawer,
   DrawerBody,
+  DrawerCloseButton,
   DrawerContent,
   DrawerHeader,
   DrawerOverlay,
@@ -43,6 +43,7 @@ const LeftMenu = () => {
         <DrawerContent>
           <DrawerHeader>
             {status === 'authenticated' ? <LoginMenu /> : <LogoutMenu />}
+            <DrawerCloseButton />
           </DrawerHeader>
 
           <DrawerBody></DrawerBody>
