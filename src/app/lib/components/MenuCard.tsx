@@ -27,13 +27,16 @@ const MenuCard = ({
   return (
     <Card maxW="sm">
       <CardBody>
-        <Image src={img} alt={name} boxSize='100px'
-    objectFit='cover' borderRadius="lg" />
+        <Image
+          src={img}
+          alt={name}
+          boxSize="100px"
+          objectFit="cover"
+          borderRadius="lg"
+        />
         <Stack mt="6" spacing="3">
           <Heading size="md">{name}</Heading>
-          <Text color="blue.600">
-            価格: {price}円
-          </Text>
+          <Text color="blue.600">{price}円</Text>
         </Stack>
       </CardBody>
       <Divider />
