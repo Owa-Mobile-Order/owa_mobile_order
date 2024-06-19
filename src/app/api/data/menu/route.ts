@@ -1,4 +1,4 @@
-import { MenuModel } from '@/app/lib/models/menus';
+import MenuModel from '@/app/lib/models/menus';
 import mongoose from 'mongoose';
 import { NextResponse } from 'next/server';
 

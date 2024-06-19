@@ -1,23 +1,36 @@
-import { Schema, model } from 'mongoose';
+import { Schema, Document, Model, models, model } from 'mongoose';
 
-const MenuModel = model(
-  'menu',
-  new Schema({
-    name: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    price: {
-      type: Number,
-      required: true,
-    },
-    img: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-  })
-);
+export interface MenuDoc extends Document {
+  name: string;
+  price: number;
+  img: string;
+}
 
-export { MenuModel };
+const menuSchema = new Schema({
+  username: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+});
+
+interface MenuModel extends Model<MenuDoc> {}
+
+export default models['Menu']
+  ? (models['Menu'] as MenuModel)
+  : model<MenuDoc, MenuModel>('Menu', menuSchema);
+
+/*
+{
+  name: "カレーライス",
+  price: 300,
+  img: "https://www.kaigo-antenna.jp/uploads/illustration/main_image/815/202107_035_s.jpg"
+}
+*/
