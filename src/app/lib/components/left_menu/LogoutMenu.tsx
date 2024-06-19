@@ -1,5 +1,5 @@
 const LogoutMenu = () => {
-  return <>ログアウト</>
-}
+  return <>ログアウト</>;
+};
 
-export { LogoutMenu }
+export { LogoutMenu };

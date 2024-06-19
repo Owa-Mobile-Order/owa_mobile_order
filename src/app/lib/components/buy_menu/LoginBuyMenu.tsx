@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import {
   Drawer,
   DrawerBody,
@@ -19,41 +19,41 @@ import {
   TableContainer,
   Text,
   useToast,
-} from '@chakra-ui/react'
-import { useSession } from 'next-auth/react'
-import React, { useState } from 'react'
+} from '@chakra-ui/react';
+import { useSession } from 'next-auth/react';
+import React, { useState } from 'react';
 
 const LoginBuyMenu = ({
   id,
   name,
   price,
 }: {
-  id: number
-  name: string
-  price: number
-  img: string
+  id: number;
+  name: string;
+  price: number;
+  img: string;
 }) => {
   // Toast
-  const toast = useToast()
+  const toast = useToast();
 
   // メニューの状態
-  const { isOpen, onOpen, onClose } = useDisclosure()
-  const btnRef = React.useRef(null)
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const btnRef = React.useRef(null);
 
   // 予約ボタンのロード
-  const [isLoading, setLoading] = useState(false)
+  const [isLoading, setLoading] = useState(false);
 
   // ユーザー情報の取得
-  const { data: session } = useSession()
+  const { data: session } = useSession();
 
-  if (!session) return null
-  if (!session.user) return null
-  if (!session.user.image || !session.user.name) return null
+  if (!session) return null;
+  if (!session.user) return null;
+  if (!session.user.image || !session.user.name) return null;
 
   const handleSubmit = () => {
-    setLoading(true)
+    setLoading(true);
     // WSに接続
-    const connection = new WebSocket('ws://133.18.202.177:3001')
+    const connection = new WebSocket('ws://133.18.202.177:3001');
     connection.addEventListener('open', () => {
       // 接続完了時、データを送信
       connection.send(
@@ -61,25 +61,25 @@ const LoginBuyMenu = ({
           id: id,
           user: session.user,
         })
-      )
-    })
+      );
+    });
 
     connection.addEventListener('message', (message) => {
       // メッセージを取得し、trueの場合に完了メッセージを表示
-      const data = JSON.parse(message.data)
+      const data = JSON.parse(message.data);
       if (data.message === 'A message has been recived successfully.') {
-        onClose()
-        setLoading(false)
+        onClose();
+        setLoading(false);
         toast({
           title: '予約を受け付けました',
           description: `${name}を予約しました！ありがとうございます！`,
           status: 'success',
           duration: 4000,
           isClosable: true,
-        })
+        });
       }
-    })
-  }
+    });
+  };
 
   return (
     <>
@@ -137,7 +137,7 @@ const LoginBuyMenu = ({
         </DrawerContent>
       </Drawer>
     </>
-  )
-}
+  );
+};
 
-export { LoginBuyMenu }
+export { LoginBuyMenu };

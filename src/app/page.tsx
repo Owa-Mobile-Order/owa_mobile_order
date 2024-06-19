@@ -1,8 +1,8 @@
-import { NextPage } from 'next'
-import { Header } from '@/app/lib/components/Header'
-import '@/app/public/css/reset.css'
-import { Flex, Heading } from '@chakra-ui/react'
-import { MenuCard } from './lib/components/MenuCard'
+import { NextPage } from 'next';
+import { Header } from '@/app/lib/components/Header';
+import '@/app/public/css/reset.css';
+import { Flex, Heading } from '@chakra-ui/react';
+import { MenuCard } from './lib/components/MenuCard';
 
 const Page: NextPage = () => {
   return (
@@ -20,7 +20,7 @@ const Page: NextPage = () => {
         />
       </Flex>
     </>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;

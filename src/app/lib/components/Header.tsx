@@ -1,20 +1,20 @@
-'use client'
-import { Alert, AlertIcon, Box, Heading, Spacer } from '@chakra-ui/react'
-import { LeftMenu } from '@/app/lib/components/LeftMenu'
-import { useSession } from 'next-auth/react'
-import { Login } from './auth/Login'
-import { Logout } from './auth/Logout'
+'use client';
+import { Alert, AlertIcon, Box, Heading, Spacer } from '@chakra-ui/react';
+import { LeftMenu } from '@/app/lib/components/LeftMenu';
+import { useSession } from 'next-auth/react';
+import { Login } from './auth/Login';
+import { Logout } from './auth/Logout';
 
 const Header = () => {
-  const { data: _session, status } = useSession()
+  const { data: _session, status } = useSession();
   return (
     <Box height={'64px'} px={'20px'} display={'flex'}>
       <LeftMenu />
       {/*ヘッダーの文字*/}
-      <Heading my={'auto'} fontSize={'2xl'}>
+      {/* <Heading my={'auto'} fontSize={'2xl'}>
         Owa Mobile Order
       </Heading>
-      <Spacer />
+      <Spacer /> */}
       <Alert status="warning">
         <AlertIcon />
         カート機能は現在開発中です
@@ -24,7 +24,7 @@ const Header = () => {
         {status !== 'authenticated' ? <Login /> : <Logout />}
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export { Header }
+export { Header };

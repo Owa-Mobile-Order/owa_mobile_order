@@ -1,12 +1,12 @@
-import { Avatar, Box, Text } from '@chakra-ui/react'
-import { useSession } from 'next-auth/react'
+import { Avatar, Box, Text } from '@chakra-ui/react';
+import { useSession } from 'next-auth/react';
 
 const LoginMenu = () => {
-  const { data: session } = useSession()
+  const { data: session } = useSession();
 
-  if (!session) return null
-  if (!session.user) return null
-  if (!session.user.image || !session.user.name) return null
+  if (!session) return null;
+  if (!session.user) return null;
+  if (!session.user.image || !session.user.name) return null;
 
   return (
     <Box display={'flex'}>
@@ -15,7 +15,7 @@ const LoginMenu = () => {
         {session.user.name}
       </Text>
     </Box>
-  )
-}
+  );
+};
 
-export { LoginMenu }
+export { LoginMenu };

@@ -1,9 +1,9 @@
-import React from 'react'
-import { useSession, signOut } from 'next-auth/react'
-import { Button } from '@chakra-ui/react'
+import React from 'react';
+import { useSession, signOut } from 'next-auth/react';
+import { Button } from '@chakra-ui/react';
 
 const Logout = () => {
-  const { data: _session, status } = useSession()
+  const { data: _session, status } = useSession();
 
   if (status === 'authenticated') {
     return (
@@ -15,9 +15,9 @@ const Logout = () => {
       >
         ログアウト
       </Button>
-    )
+    );
   }
-  return null
-}
+  return null;
+};
 
-export { Logout }
+export { Logout };

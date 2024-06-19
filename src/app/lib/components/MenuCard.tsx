@@ -9,9 +9,9 @@ import {
   CardFooter,
   ButtonGroup,
   Button,
-} from '@chakra-ui/react'
-import React from 'react'
-import { LoginBuyMenu } from './buy_menu/LoginBuyMenu'
+} from '@chakra-ui/react';
+import React from 'react';
+import { LoginBuyMenu } from './buy_menu/LoginBuyMenu';
 
 const MenuCard = ({
   id,
@@ -19,10 +19,10 @@ const MenuCard = ({
   price,
   img,
 }: {
-  id: number
-  name: string
-  price: number
-  img: string
+  id: number;
+  name: string;
+  price: number;
+  img: string;
 }) => {
   return (
     <Card maxW="sm">
@@ -49,7 +49,7 @@ const MenuCard = ({
         </ButtonGroup>
       </CardFooter>
     </Card>
-  )
-}
+  );
+};
 
-export { MenuCard }
+export { MenuCard };

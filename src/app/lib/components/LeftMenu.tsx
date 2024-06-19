@@ -1,17 +1,17 @@
-import { Box, IconButton } from '@chakra-ui/react'
-import { HamburgerIcon, Icon } from '@chakra-ui/icons'
-import React, { useState } from 'react'
-import { useSession } from 'next-auth/react'
-import { LoginMenu } from './left_menu/LoginMenu'
-import { LogoutMenu } from './left_menu/LogoutMenu'
+import { Box, IconButton } from '@chakra-ui/react';
+import { HamburgerIcon, Icon } from '@chakra-ui/icons';
+import React, { useState } from 'react';
+import { useSession } from 'next-auth/react';
+import { LoginMenu } from './left_menu/LoginMenu';
+import { LogoutMenu } from './left_menu/LogoutMenu';
 
 const LeftMenu = () => {
-  const { data: _session, status } = useSession()
-  const [isOpen, setOpen] = useState(true)
+  const { data: _session, status } = useSession();
+  const [isOpen, setOpen] = useState(true);
 
   const toggleOpen = () => {
-    setOpen(!isOpen)
-  }
+    setOpen(!isOpen);
+  };
 
   return (
     <>
@@ -54,7 +54,7 @@ const LeftMenu = () => {
         onClick={toggleOpen}
       />
     </>
-  )
-}
+  );
+};
 
-export { LeftMenu }
+export { LeftMenu };
