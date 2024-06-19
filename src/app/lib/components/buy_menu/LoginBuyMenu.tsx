@@ -23,7 +23,6 @@ import {
 import { useSession } from 'next-auth/react'
 import React, { useState } from 'react'
 
-
 const LoginBuyMenu = ({
   id,
   name,
@@ -36,13 +35,13 @@ const LoginBuyMenu = ({
 }) => {
   // Toast
   const toast = useToast()
-  
+
   // メニューの状態
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = React.useRef(null)
 
   // 予約ボタンのロード
-  const [isLoading, setLoading]= useState(false)
+  const [isLoading, setLoading] = useState(false)
 
   // ユーザー情報の取得
   const { data: session } = useSession()
@@ -51,23 +50,24 @@ const LoginBuyMenu = ({
   if (!session.user) return null
   if (!session.user.image || !session.user.name) return null
 
-  
   const handleSubmit = () => {
     setLoading(true)
     // WSに接続
-    const connection = new WebSocket("ws://133.18.202.177:3001")
+    const connection = new WebSocket('ws://133.18.202.177:3001')
     connection.addEventListener('open', () => {
       // 接続完了時、データを送信
-      connection.send(JSON.stringify({
-        id: id,
-        user: session.user
-      }))
+      connection.send(
+        JSON.stringify({
+          id: id,
+          user: session.user,
+        })
+      )
     })
 
     connection.addEventListener('message', (message) => {
       // メッセージを取得し、trueの場合に完了メッセージを表示
       const data = JSON.parse(message.data)
-      if (data.message === "A message has been recived successfully.") {
+      if (data.message === 'A message has been recived successfully.') {
         onClose()
         setLoading(false)
         toast({
@@ -126,7 +126,11 @@ const LoginBuyMenu = ({
             <Button variant="outline" mr={3} onClick={onClose}>
               キャンセル
             </Button>
-            <Button colorScheme="blue" onClick={handleSubmit} isLoading={isLoading}>
+            <Button
+              colorScheme="blue"
+              onClick={handleSubmit}
+              isLoading={isLoading}
+            >
               予約
             </Button>
           </DrawerFooter>

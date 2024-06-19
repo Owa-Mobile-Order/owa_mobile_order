@@ -1,5 +1,5 @@
 'use client'
-import { Box, Heading, Spacer } from '@chakra-ui/react'
+import { Alert, AlertIcon, Box, Heading, Spacer } from '@chakra-ui/react'
 import { LeftMenu } from '@/app/lib/components/LeftMenu'
 import { useSession } from 'next-auth/react'
 import { Login } from './auth/Login'
@@ -14,6 +14,11 @@ const Header = () => {
       <Heading my={'auto'} fontSize={'2xl'}>
         Owa Mobile Order
       </Heading>
+      <Spacer />
+      <Alert status="warning">
+        <AlertIcon />
+        カート機能は現在開発中です
+      </Alert>
       <Spacer />
       <Box my={'auto'} mx={'10px'}>
         {status !== 'authenticated' ? <Login /> : <Logout />}
