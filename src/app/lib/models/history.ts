@@ -10,10 +10,6 @@ export interface HistoryDoc extends Document {
 
 const historySchema = new Schema(
   {
-    id: {
-      type: String,
-      required: true,
-    },
     name: {
       type: String,
       required: true,
