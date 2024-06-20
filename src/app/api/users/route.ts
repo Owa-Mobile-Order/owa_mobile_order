@@ -2,11 +2,13 @@ import mongoose from 'mongoose';
 import UserModel from '@/app/lib/models/users';
 import { NextResponse } from 'next/server';
 
+// ユーザー情報を取得
 export async function POST(req: Request) {
   await mongoose.connect(process.env.DATABASE_CONNECTION_STRING).catch();
 
   const { token } = await req.json();
 
+  // ユーザー情報を取得
   const data = await UserModel.findOne({ token: token });
 
   if (!data) {
@@ -20,6 +22,7 @@ export async function POST(req: Request) {
     );
   }
 
+  // email,uuidを返還
   return NextResponse.json({
     email: data.email,
     uuid: data.uuid,
