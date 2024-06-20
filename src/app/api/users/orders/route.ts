@@ -108,6 +108,7 @@ export async function PUT(req: Request) {
   }
 
   data.pending = state;
+  await data.save();
 
   return NextResponse.json({
     state: state,
