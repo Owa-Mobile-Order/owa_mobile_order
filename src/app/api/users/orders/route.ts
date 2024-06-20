@@ -40,11 +40,7 @@ export async function POST(req: Request) {
 // オーダー履歴の取得
 export async function GET(
   _req: Request,
-  {
-    params,
-  }: {
-    params: { uuid: string };
-  }
+  { params }: { params: { uuid: string } }
 ) {
   await mongoose.connect(process.env.DATABASE_CONNECTION_STRING).catch();
 
@@ -89,5 +85,31 @@ export async function GET(
         isPending: history.pending,
       };
     }),
+  });
+}
+
+// 注文状態を変更
+export async function PUT(req: Request) {
+  await mongoose.connect(process.env.DATABASE_CONNECTION_STRING).catch();
+
+  // 情報をBodyから取得する
+  const { id, state } = await req.json();
+
+  const data = await HistoryModel.findOne({ _id: id });
+  if (!data) {
+    return NextResponse.json(
+      {
+        message: 'The specified order does not exist.',
+      },
+      {
+        status: 404,
+      }
+    );
+  }
+
+  data.pending = state;
+
+  return NextResponse.json({
+    state: state,
   });
 }
