@@ -2,7 +2,6 @@ import mongoose from 'mongoose';
 import HistoryModel from '@/app/lib/models/history';
 import UserModel from '@/app/lib/models/users';
 import { NextResponse } from 'next/server';
-import { randomUUID } from 'crypto';
 
 // 注文データの作成
 export async function POST(req: Request) {
@@ -26,7 +25,6 @@ export async function POST(req: Request) {
 
   // オーダーデータを作成
   const data = await HistoryModel.create({
-    id: randomUUID(),
     name: name,
     uuid: user_data.uuid,
     pending: false,
@@ -35,7 +33,7 @@ export async function POST(req: Request) {
   // オーダーデータの作成後リターン
   return NextResponse.json({
     message: 'A order has been created.',
-    id: data.id,
+    id: data._id,
   });
 }
 
@@ -97,7 +95,7 @@ export async function PUT(req: Request) {
   // 情報をBodyから取得する
   const { id, state } = await req.json();
 
-  const data = await HistoryModel.findOne({ id: id });
+  const data = await HistoryModel.findOne({ _id: id });
   if (!data) {
     return NextResponse.json(
       {

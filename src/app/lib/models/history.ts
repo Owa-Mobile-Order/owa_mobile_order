@@ -32,6 +32,8 @@ const historySchema = new Schema(
   }
 );
 
+historySchema.index({ name: 1 }, { unique: false });
+
 interface HistoryModel extends Model<HistoryDoc> {}
 
 export default models['History']
