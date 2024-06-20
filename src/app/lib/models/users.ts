@@ -10,17 +10,14 @@ const userSchema = new Schema({
   email: {
     type: String,
     required: true,
-    unique: true,
   },
   uuid: {
     type: String,
     required: true,
-    unique: true,
   },
   token: {
     type: String,
     required: true,
-    unique: true,
   },
 });
 

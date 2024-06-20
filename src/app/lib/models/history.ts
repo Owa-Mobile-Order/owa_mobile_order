@@ -13,17 +13,14 @@ const historySchema = new Schema(
     name: {
       type: String,
       required: true,
-      unique: true,
     },
     uuid: {
       type: String,
       required: true,
-      unique: true,
     },
     pending: {
       type: Boolean,
       required: true,
-      unique: true,
     },
   },
   {
