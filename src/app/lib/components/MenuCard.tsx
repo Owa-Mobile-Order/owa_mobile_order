@@ -25,7 +25,7 @@ const MenuCard = ({
   img: string;
 }) => {
   return (
-    <Card maxW="sm" m={'20px'}>
+    <Card maxW="sm" m={'20px'} w={'250px'}>
       <CardBody>
         <Image
           src={img}
@@ -43,9 +43,9 @@ const MenuCard = ({
       <CardFooter>
         <ButtonGroup spacing="2">
           <LoginBuyMenu id={id} name={name} price={price} img={img} />
-          <Button variant="ghost" colorScheme="blue" isDisabled={true}>
+          {/* <Button variant="ghost" colorScheme="blue" isDisabled={true}>
             カートに追加
-          </Button>
+          </Button> */}
         </ButtonGroup>
       </CardFooter>
     </Card>

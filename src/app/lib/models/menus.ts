@@ -7,15 +7,15 @@ export interface MenuDoc extends Document {
 }
 
 const menuSchema = new Schema({
-  username: {
+  name: {
     type: String,
     required: true,
   },
-  email: {
-    type: String,
+  price: {
+    type: Number,
     required: true,
   },
-  password: {
+  img: {
     type: String,
     required: true,
   },
