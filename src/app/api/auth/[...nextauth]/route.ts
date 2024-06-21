@@ -26,7 +26,7 @@ const authOptions: NextAuthOptions = {
         });
       }
 
-      if (!email?.endsWith("e.osakamanabi.jp")) return false;
+      // if (!email?.endsWith("e.osakamanabi.jp")) return false;
 
       return true;
     },
