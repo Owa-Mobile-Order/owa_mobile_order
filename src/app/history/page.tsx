@@ -54,16 +54,22 @@ const Page: NextPage = () => {
       <>
         <Header />
         <Heading m={'40px'}>注文履歴</Heading>
-        <Spinner
-          thickness="4px"
-          speed="0.65s"
-          emptyColor="gray.200"
-          color="blue.500"
-          size="xl"
-          display={isLoading ? 'block' : 'none'}
-          m="auto"
-        />
-        <Flex m="20px">
+        <Flex
+          direction={{ base: 'column', md: 'row' }}
+          margin={{ base: '0', md: '0 auto' }}
+          width="100%"
+          px={'40px'}
+          className={'menu_card'}
+        >
+          <Spinner
+            thickness="4px"
+            speed="0.65s"
+            emptyColor="gray.200"
+            color="blue.500"
+            size="xl"
+            display={isLoading ? 'block' : 'none'}
+            m="auto"
+          />
           {histories.map((history) => (
             <HistoryCard
               key={history.name}

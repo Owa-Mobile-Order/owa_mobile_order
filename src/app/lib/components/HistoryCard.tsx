@@ -19,6 +19,7 @@ import {
   AlertDialogOverlay,
 } from '@chakra-ui/react';
 import React from 'react';
+import '@/app/public/css/lastchild.css';
 
 const HistoryCard = ({
   name,
@@ -35,7 +36,13 @@ const HistoryCard = ({
   const cancelRef = React.useRef(null);
 
   return (
-    <Card maxW="sm" m={'20px'} w={'250px'}>
+    <Card
+      width={{ base: '100%', md: '250px' }}
+      minW={{ md: '250px' }}
+      mr={'40px'}
+      className={'card'}
+      mb={'40px'}
+    >
       <CardBody>
         <Heading fontSize={'3xl'}>{order_id ?? 'Null'}</Heading>
         <Stack mt="6" spacing="3">

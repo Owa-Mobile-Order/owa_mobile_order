@@ -5,6 +5,7 @@ import '@/app/public/css/reset.css';
 import { Flex, Heading, Spinner } from '@chakra-ui/react';
 import { MenuCard } from './lib/components/MenuCard';
 import { useEffect, useState } from 'react';
+import '@/app/public/css/lastchild.css';
 
 interface MenuItem {
   name: string;
@@ -37,7 +38,13 @@ const Page: NextPage = () => {
     <>
       <Header />
       <Heading m={'40px'}>商品を購入する</Heading>
-      <Flex m={'20px'} key={1}>
+      <Flex
+        direction={{ base: 'column', md: 'row' }}
+        margin={{ base: '0', md: '0 auto' }}
+        width="100%"
+        px={'40px'}
+        className={'menu_card'}
+      >
         <Spinner
           thickness="4px"
           speed="0.65s"

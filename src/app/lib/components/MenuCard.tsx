@@ -22,23 +22,29 @@ const MenuCard = ({
   img: string;
 }) => {
   return (
-    <Card maxW="sm" m={'20px'} w={'250px'}>
+    <Card
+      width={{ base: '100%', md: '250px' }}
+      mr={'40px'}
+      className={'card'}
+      mb={'40px'}
+    >
       <CardBody>
         <Image
           src={img}
           alt={name}
-          boxSize="100px"
+          height={{ base: '5%', md: '150px' }}
           objectFit="cover"
           borderRadius="lg"
+          m={'0 auto'}
         />
-        <Stack mt="6" spacing="3">
+        <Stack mt="6" spacing="3" textAlign={'center'}>
           <Heading size="md">{name}</Heading>
           <Text color="blue.600">{price}円</Text>
         </Stack>
       </CardBody>
       <Divider />
       <CardFooter>
-        <ButtonGroup spacing="2">
+        <ButtonGroup spacing="2" m={'0 auto'}>
           <LoginBuyMenu name={name} price={price} img={img} />
           {/* <Button variant="ghost" colorScheme="blue" isDisabled={true}>
             カートに追加
