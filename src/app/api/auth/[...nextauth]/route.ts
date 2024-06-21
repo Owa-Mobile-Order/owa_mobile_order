@@ -3,6 +3,7 @@ import NextAuth from 'next-auth/next';
 import GoogleProvider from 'next-auth/providers/google';
 import UserModel from '@/app/lib/models/users';
 import { randomUUID } from 'crypto';
+import mongoose from 'mongoose';
 
 const authOptions: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
@@ -15,6 +16,8 @@ const authOptions: NextAuthOptions = {
   callbacks: {
     async signIn({ user }) {
       const email = user.email;
+
+      await mongoose.connect(process.env.DATABASE_CONNECTION_STRING).catch()
 
       const data = await UserModel.findOne({ email: email });
 
@@ -32,6 +35,8 @@ const authOptions: NextAuthOptions = {
     },
     async session({ session }) {
       const email = session.user.email;
+
+      await mongoose.connect(process.env.DATABASE_CONNECTION_STRING).catch()
 
       const data = await UserModel.findOne({ email: email });
 
