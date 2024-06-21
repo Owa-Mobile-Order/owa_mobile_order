@@ -24,11 +24,9 @@ import { useSession } from 'next-auth/react';
 import React, { useState } from 'react';
 
 const LoginBuyMenu = ({
-  id,
   name,
   price,
 }: {
-  id: number;
   name: string;
   price: number;
   img: string;
@@ -50,7 +48,7 @@ const LoginBuyMenu = ({
   if (!session.user) return null;
   if (!session.user.image || !session.user.name) return null;
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     setLoading(true);
     // WSに接続
     const connection = new WebSocket('ws://133.18.202.177:3001');
@@ -58,27 +56,42 @@ const LoginBuyMenu = ({
       // 接続完了時、データを送信
       connection.send(
         JSON.stringify({
-          id: id,
+          name: name,
           user: session.user,
         })
       );
     });
 
-    connection.addEventListener('message', (message) => {
-      // メッセージを取得し、trueの場合に完了メッセージを表示
-      const data = JSON.parse(message.data);
-      if (data.message === 'A message has been recived successfully.') {
-        onClose();
-        setLoading(false);
-        toast({
-          title: '予約を受け付けました',
-          description: `${name}を予約しました！ありがとうございます！`,
-          status: 'success',
-          duration: 4000,
-          isClosable: true,
-        });
+    const order = await fetch(
+      `${process.env.NEXT_PUBLIC_API_ENDPOINT}/users/orders`,
+      {
+        method: 'POST',
+        body: JSON.stringify({
+          token: session.user.token,
+          name: name,
+        }),
       }
-    });
+    );
+
+    if (order.status === 200) {
+      setLoading(false);
+      toast({
+        title: '予約を受け付けました',
+        description: `${name}を予約しました！ありがとうございます！`,
+        status: 'success',
+        duration: 4000,
+        isClosable: true,
+      });
+    } else {
+      setLoading(false);
+      toast({
+        title: 'エラーが発生しました',
+        description: `予期せぬエラーが発生しました。もう一度お試しください。`,
+        status: 'error',
+        duration: 4000,
+        isClosable: true,
+      });
+    }
   };
 
   return (

@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import HistoryModel from '@/app/lib/models/history';
 import UserModel from '@/app/lib/models/users';
 import { NextResponse } from 'next/server';
+import { generateRandomCode } from '@/app/lib/functions/generateRandomCode';
 
 // 注文データの作成
 export async function POST(req: Request) {
@@ -23,17 +24,23 @@ export async function POST(req: Request) {
     );
   }
 
+  const code = generateRandomCode(8);
+
   // オーダーデータを作成
   const data = await HistoryModel.create({
     name: name,
     uuid: user_data.uuid,
     pending: false,
+    order_id: code,
   });
+
+  console.log(code);
 
   // オーダーデータの作成後リターン
   return NextResponse.json({
     message: 'A order has been created.',
     id: data._id,
+    order_id: data.order_id,
   });
 }
 

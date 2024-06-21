@@ -2,6 +2,7 @@ import { Schema, Document, Model, models, model } from 'mongoose';
 
 export interface HistoryDoc extends Document {
   name: string;
+  order_id: string;
   uuid: string;
   pending: boolean;
   createdAt: Date;
@@ -11,6 +12,10 @@ export interface HistoryDoc extends Document {
 const historySchema = new Schema(
   {
     name: {
+      type: String,
+      required: true,
+    },
+    order_id: {
       type: String,
       required: true,
     },

@@ -13,12 +13,10 @@ import React from 'react';
 import { LoginBuyMenu } from './buy_menu/LoginBuyMenu';
 
 const MenuCard = ({
-  id,
   name,
   price,
   img,
 }: {
-  id: number;
   name: string;
   price: number;
   img: string;
@@ -41,7 +39,7 @@ const MenuCard = ({
       <Divider />
       <CardFooter>
         <ButtonGroup spacing="2">
-          <LoginBuyMenu id={id} name={name} price={price} img={img} />
+          <LoginBuyMenu name={name} price={price} img={img} />
           {/* <Button variant="ghost" colorScheme="blue" isDisabled={true}>
             カートに追加
           </Button> */}

@@ -5,7 +5,9 @@ import {
   DrawerContent,
   DrawerHeader,
   DrawerOverlay,
+  Flex,
   IconButton,
+  Link,
   useDisclosure,
 } from '@chakra-ui/react';
 import { HamburgerIcon, Icon } from '@chakra-ui/icons';
@@ -46,7 +48,20 @@ const LeftMenu = () => {
             <DrawerCloseButton />
           </DrawerHeader>
 
-          <DrawerBody></DrawerBody>
+          <DrawerBody>
+            {status === 'authenticated' ? (
+              <Flex flexFlow={'column'} m={'10px'}>
+                <Link href="/" fontSize={'xl'} m={'10px'}>
+                  ホーム
+                </Link>
+                <Link href="history" fontSize={'xl'} m={'10px'}>
+                  注文履歴
+                </Link>
+              </Flex>
+            ) : (
+              <></>
+            )}
+          </DrawerBody>
         </DrawerContent>
       </Drawer>
     </>

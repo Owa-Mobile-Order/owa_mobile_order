@@ -49,6 +49,7 @@ export async function GET(
         name: history.name,
         timestamp: history.createdAt,
         isPending: history.pending,
+        order_id: history.order_id,
       };
     }),
   });
