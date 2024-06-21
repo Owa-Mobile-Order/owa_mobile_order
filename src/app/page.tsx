@@ -20,7 +20,9 @@ const Page: NextPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://omo.ktrnds.com/api/data/menu'); // 実際のAPIエンドポイントに変更
+        const response = await fetch(
+          `${process.env.API_ENDPOINT}/api/data/menu`
+        ); // 実際のAPIエンドポイントに変更
         const data: MenuItem[] = await response.json();
         setMenuItems(data);
         setLoading(false);

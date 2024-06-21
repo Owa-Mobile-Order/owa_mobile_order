@@ -8,7 +8,6 @@ import {
   Divider,
   CardFooter,
   ButtonGroup,
-  Button,
 } from '@chakra-ui/react';
 import React from 'react';
 import { LoginBuyMenu } from './buy_menu/LoginBuyMenu';

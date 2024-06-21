@@ -1,5 +1,5 @@
 'use client';
-import { Alert, AlertIcon, Box, Heading, Spacer } from '@chakra-ui/react';
+import { Alert, AlertIcon, Box, Spacer } from '@chakra-ui/react';
 import { LeftMenu } from '@/app/lib/components/LeftMenu';
 import { useSession } from 'next-auth/react';
 import { Login } from './auth/Login';
