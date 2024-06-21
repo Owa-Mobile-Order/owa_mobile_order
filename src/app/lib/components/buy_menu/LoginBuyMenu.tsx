@@ -75,6 +75,7 @@ const LoginBuyMenu = ({
 
     if (order.status === 200) {
       setLoading(false);
+      onClose()
       toast({
         title: '予約を受け付けました',
         description: `${name}を予約しました！ありがとうございます！`,
