@@ -51,7 +51,7 @@ const LoginBuyMenu = ({
   const handleSubmit = async () => {
     setLoading(true);
     // WSに接続
-    const connection = new WebSocket('ws://133.18.202.177:3001');
+    const connection = new WebSocket(process.env.WS_URI);
     connection.addEventListener('open', () => {
       // 接続完了時、データを送信
       connection.send(

@@ -7,6 +7,7 @@ declare global {
       NEXTAUTH_SECRET: string;
       DATABASE_CONNECTION_STRING: string;
       NEXT_PUBLIC_API_ENDPOINT: string;
+      WS_URI: string;
     }
   }
 }
