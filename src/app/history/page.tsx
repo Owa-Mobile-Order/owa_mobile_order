@@ -1,13 +1,14 @@
 'use client';
 import { NextPage } from 'next';
 import { Header } from '../lib/components/Header';
-import { Flex, Heading } from '@chakra-ui/react';
+import { Flex, Heading, Spinner } from '@chakra-ui/react';
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import { HistoryCard } from '../lib/components/HistoryCard';
 
 const Page: NextPage = () => {
   const { data: session, status } = useSession();
+  const [isLoading, setLoading] = useState(true);
 
   const [histories, setHistories] = useState<
     {
@@ -40,6 +41,7 @@ const Page: NextPage = () => {
           const response = await histories.json();
 
           setHistories(response.history);
+          setLoading(false);
         }
       };
 
@@ -52,6 +54,15 @@ const Page: NextPage = () => {
       <>
         <Header />
         <Heading m={'40px'}>注文履歴</Heading>
+        <Spinner
+          thickness="4px"
+          speed="0.65s"
+          emptyColor="gray.200"
+          color="blue.500"
+          size="xl"
+          display={isLoading ? 'block' : 'none'}
+          m="auto"
+        />
         <Flex m="20px">
           {histories.map((history) => (
             <HistoryCard

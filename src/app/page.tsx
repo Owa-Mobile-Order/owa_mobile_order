@@ -45,6 +45,7 @@ const Page: NextPage = () => {
           color="blue.500"
           size="xl"
           display={isLoading ? 'block' : 'none'}
+          m={'auto'}
         />
         {menuItems.map((item) => (
           <MenuCard
