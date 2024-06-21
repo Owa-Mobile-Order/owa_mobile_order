@@ -32,7 +32,7 @@ const MenuCard = ({
         <Image
           src={img}
           alt={name}
-          height={{ base: '5%', md: '150px' }}
+          height={{ base: '100px', md: '150px' }}
           objectFit="cover"
           borderRadius="lg"
           m={'0 auto'}
