@@ -21,7 +21,7 @@ const Page: NextPage = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `${process.env.API_ENDPOINT}/api/data/menu`
+          `${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/data/menu`
         ); // 実際のAPIエンドポイントに変更
         const data: MenuItem[] = await response.json();
         setMenuItems(data);
