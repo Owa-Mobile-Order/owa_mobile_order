@@ -1,9 +1,9 @@
 'use client';
 import { NextPage } from 'next';
-import { Header } from '@/app/lib/components/Header';
+import { Header } from '@/lib/components/Header';
 import '@/app/public/css/reset.css';
 import { Flex, Heading, Spinner } from '@chakra-ui/react';
-import { MenuCard } from './lib/components/MenuCard';
+import { MenuCard } from '@/lib/components/MenuCard';
 import { useEffect, useState } from 'react';
 import '@/app/public/css/lastchild.css';
 

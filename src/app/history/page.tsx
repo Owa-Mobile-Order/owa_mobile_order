@@ -1,10 +1,10 @@
 'use client';
 import { NextPage } from 'next';
-import { Header } from '../lib/components/Header';
+import { Header } from '@/lib/components/Header';
 import { Flex, Heading, Spinner } from '@chakra-ui/react';
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
-import { HistoryCard } from '../lib/components/HistoryCard';
+import { HistoryCard } from '@/lib/components/HistoryCard';
 
 const Page: NextPage = () => {
   const { data: session, status } = useSession();

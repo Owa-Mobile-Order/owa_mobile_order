@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
-import HistoryModel from '@/app/lib/models/history';
-import UserModel from '@/app/lib/models/users';
+import HistoryModel from '@/lib/models/history';
+import UserModel from '@/lib/models/users';
 import { NextResponse } from 'next/server';
-import { generateRandomCode } from '@/app/lib/functions/generateRandomCode';
+import { generateRandomCode } from '@/lib/functions/generateRandomCode';
 
 // 注文データの作成
 export async function POST(req: Request) {

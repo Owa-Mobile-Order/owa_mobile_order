@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import UserModel from '@/app/lib/models/users';
+import UserModel from '@/lib/models/users';
 import { NextResponse } from 'next/server';
 
 // ユーザー情報を取得
