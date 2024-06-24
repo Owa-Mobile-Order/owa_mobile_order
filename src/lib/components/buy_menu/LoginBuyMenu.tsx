@@ -69,6 +69,7 @@ const LoginBuyMenu = ({
         body: JSON.stringify({
           token: session.user.token,
           name: name,
+          user_name: session.user.name,
         }),
       }
     );

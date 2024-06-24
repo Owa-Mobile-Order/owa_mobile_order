@@ -9,7 +9,7 @@ export async function POST(req: Request) {
   await mongoose.connect(process.env.DATABASE_CONNECTION_STRING).catch();
 
   // 情報をBodyから取得する
-  const { token, name } = await req.json();
+  const { token, name, user_name } = await req.json();
 
   // ユーザーデータを検索
   const user_data = await UserModel.findOne({ token: token });
@@ -32,7 +32,7 @@ export async function POST(req: Request) {
     uuid: user_data.uuid,
     pending: false,
     order_id: code,
-    user_name: user_data.user_name,
+    user_name: user_name,
   });
 
   console.log(code);
@@ -74,7 +74,7 @@ export async function PUT(req: Request) {
 
 export async function GET() {
   await mongoose.connect(process.env.DATABASE_CONNECTION_STRING).catch();
-  
+
   const data = await HistoryModel.find({ pending: true })
     .limit(10)
     .sort({ createdAt: -1 });
