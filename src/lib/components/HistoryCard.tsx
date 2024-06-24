@@ -37,8 +37,8 @@ const HistoryCard = ({
 
   return (
     <Card
-      width={{ base: '100%', md: '250px' }}
-      minW={{ md: '250px' }}
+      width={{ base: '100%', md: '260px' }}
+      minW={{ md: '260px' }}
       mr={'40px'}
       className={'card'}
       mb={'40px'}

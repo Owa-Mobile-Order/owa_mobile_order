@@ -30,7 +30,7 @@ export async function POST(req: Request) {
   const data = await HistoryModel.create({
     name: name,
     uuid: user_data.uuid,
-    pending: false,
+    pending: true,
     order_id: code,
     user_name: user_name,
   });
