@@ -15,7 +15,7 @@ const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     async signIn({ user }) {
-      const email = user.email;
+      const { email, name } = user;
 
       await mongoose.connect(process.env.DATABASE_CONNECTION_STRING).catch();
 
@@ -26,6 +26,7 @@ const authOptions: NextAuthOptions = {
           email: email,
           uuid: randomUUID(),
           token: randomUUID(),
+          user_name: name,
         });
       }
 
@@ -34,7 +35,7 @@ const authOptions: NextAuthOptions = {
       return true;
     },
     async session({ session }) {
-      const email = session.user.email;
+      const { email, name } = session.user;
 
       await mongoose.connect(process.env.DATABASE_CONNECTION_STRING).catch();
 
@@ -47,6 +48,7 @@ const authOptions: NextAuthOptions = {
           email: email,
           uuid: randomUUID(),
           token: token,
+          user_name: name,
         });
 
         session.user.token = token;

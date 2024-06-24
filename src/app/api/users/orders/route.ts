@@ -32,6 +32,7 @@ export async function POST(req: Request) {
     uuid: user_data.uuid,
     pending: false,
     order_id: code,
+    user_name: user_data.user_name,
   });
 
   console.log(code);

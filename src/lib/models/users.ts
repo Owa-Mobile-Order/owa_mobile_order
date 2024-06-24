@@ -4,6 +4,7 @@ export interface UserDoc extends Document {
   email: string;
   uuid: string;
   token: string;
+  user_name: string;
 }
 
 const userSchema = new Schema({
@@ -16,6 +17,10 @@ const userSchema = new Schema({
     required: true,
   },
   token: {
+    type: String,
+    required: true,
+  },
+  user_name: {
     type: String,
     required: true,
   },
