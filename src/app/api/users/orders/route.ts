@@ -3,6 +3,7 @@ import HistoryModel from '@/lib/models/history';
 import UserModel from '@/lib/models/users';
 import { NextResponse } from 'next/server';
 import { generateRandomCode } from '@/lib/functions/generateRandomCode';
+import { corsHeaders } from '@/lib/corsHeaders';
 
 // 注文データの作成
 export async function POST(req: Request) {
@@ -67,9 +68,14 @@ export async function PUT(req: Request) {
   data.pending = state;
   await data.save();
 
-  return NextResponse.json({
-    state: state,
-  });
+  return NextResponse.json(
+    {
+      state: state,
+    },
+    {
+      headers: corsHeaders,
+    }
+  );
 }
 
 export async function GET() {
@@ -92,15 +98,20 @@ export async function GET() {
   }
 
   // 配列にして返還
-  return NextResponse.json({
-    history: data.map((history) => {
-      return {
-        name: history.name,
-        timestamp: history.createdAt,
-        isPending: history.pending,
-        order_id: history.order_id,
-        username: history.user_name,
-      };
-    }),
-  });
+  return NextResponse.json(
+    {
+      history: data.map((history) => {
+        return {
+          name: history.name,
+          timestamp: history.createdAt,
+          isPending: history.pending,
+          order_id: history.order_id,
+          username: history.user_name,
+        };
+      }),
+    },
+    {
+      headers: corsHeaders,
+    }
+  );
 }
