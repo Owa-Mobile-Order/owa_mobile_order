@@ -57,8 +57,8 @@ const HistoryCard = ({
       <Divider />
       <CardFooter>
         <Flex>
-          <Text color={isPending ? 'green.400' : 'orange.400'} m={'auto 16px'}>
-            {isPending ? '受け取り済' : '保留中'}
+          <Text color={!isPending ? 'green.400' : 'orange.400'} m={'auto 16px'}>
+            {!isPending ? '受け取り済' : '保留中'}
           </Text>
           <Spacer />
           <Button
