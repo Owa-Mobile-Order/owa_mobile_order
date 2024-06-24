@@ -73,6 +73,8 @@ export async function PUT(req: Request) {
 }
 
 export async function GET() {
+  await mongoose.connect(process.env.DATABASE_CONNECTION_STRING).catch();
+  
   const data = await HistoryModel.find({ pending: true })
     .limit(10)
     .sort({ createdAt: -1 });
