@@ -71,3 +71,33 @@ export async function PUT(req: Request) {
     state: state,
   });
 }
+
+export async function GET() {
+  const data = await HistoryModel.find({ pending: true })
+    .limit(10)
+    .sort({ createdAt: -1 });
+
+  // データが存在しない場合空のリストを返す
+  if (!data) {
+    return NextResponse.json(
+      {
+        history: [],
+      },
+      {
+        status: 200,
+      }
+    );
+  }
+
+  // 配列にして返還
+  return NextResponse.json({
+    history: data.map((history) => {
+      return {
+        name: history.name,
+        timestamp: history.createdAt,
+        isPending: history.pending,
+        order_id: history.order_id,
+      };
+    }),
+  });
+}
