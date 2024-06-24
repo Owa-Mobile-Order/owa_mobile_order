@@ -46,14 +46,18 @@ export async function POST(req: Request) {
   });
 }
 
+export async function OPTIONS() {
+  return new NextResponse(null, { headers: corsHeaders, status: 204 });
+}
+
 // 注文状態を変更
 export async function PUT(req: Request) {
   await mongoose.connect(process.env.DATABASE_CONNECTION_STRING).catch();
 
   // 情報をBodyから取得する
-  const { id, state } = await req.json();
+  const { order_id, state } = await req.json();
 
-  const data = await HistoryModel.findOne({ _id: id });
+  const data = await HistoryModel.findOne({ order_id: order_id });
   if (!data) {
     return NextResponse.json(
       {
@@ -61,6 +65,7 @@ export async function PUT(req: Request) {
       },
       {
         status: 404,
+        headers: corsHeaders,
       }
     );
   }
