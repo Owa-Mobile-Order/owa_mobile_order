@@ -31,7 +31,7 @@ const historySchema = new Schema(
     user_name: {
       type: String,
       required: true,
-    }
+    },
   },
   {
     timestamps: true,

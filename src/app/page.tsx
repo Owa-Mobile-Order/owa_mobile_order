@@ -1,11 +1,11 @@
 'use client';
 import { NextPage } from 'next';
 import { Header } from '@/lib/components/Header';
-import '@/app/public/css/reset.css';
+import '@/public/css/reset.css';
 import { Flex, Heading, Spinner } from '@chakra-ui/react';
 import { MenuCard } from '@/lib/components/MenuCard';
 import { useEffect, useState } from 'react';
-import '@/app/public/css/lastchild.css';
+import '@/public/css/lastchild.css';
 
 interface MenuItem {
   name: string;

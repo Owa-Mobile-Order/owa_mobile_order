@@ -19,7 +19,7 @@ import {
   AlertDialogOverlay,
 } from '@chakra-ui/react';
 import React from 'react';
-import '@/app/public/css/lastchild.css';
+import '@/public/css/lastchild.css';
 
 const HistoryCard = ({
   name,

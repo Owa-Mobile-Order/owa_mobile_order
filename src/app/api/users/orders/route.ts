@@ -97,7 +97,7 @@ export async function GET() {
         timestamp: history.createdAt,
         isPending: history.pending,
         order_id: history.order_id,
-        username: history.user_name
+        username: history.user_name,
       };
     }),
   });
