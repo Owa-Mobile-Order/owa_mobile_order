@@ -7,6 +7,7 @@ export interface HistoryDoc extends Document {
   pending: boolean;
   createdAt: Date;
   updatedAt: Date;
+  user_name: string;
 }
 
 const historySchema = new Schema(
@@ -27,6 +28,10 @@ const historySchema = new Schema(
       type: Boolean,
       required: true,
     },
+    user_name: {
+      type: String,
+      required: true,
+    }
   },
   {
     timestamps: true,
