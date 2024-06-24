@@ -55,7 +55,7 @@ const Page: NextPage = () => {
         <Header />
         <Heading m={'40px'}>注文履歴</Heading>
         <Flex
-          direction={{ base: 'column', md: 'row' }}
+          flexWrap={"wrap"}
           margin={{ base: '0', md: '0 auto' }}
           width="100%"
           px={'40px'}
