@@ -21,6 +21,7 @@ export async function POST(req: Request) {
       },
       {
         status: 500,
+        headers: corsHeaders,
       }
     );
   }
@@ -39,11 +40,16 @@ export async function POST(req: Request) {
   console.log(code);
 
   // オーダーデータの作成後リターン
-  return NextResponse.json({
-    message: 'A order has been created.',
-    id: data._id,
-    order_id: data.order_id,
-  });
+  return NextResponse.json(
+    {
+      message: 'A order has been created.',
+      id: data._id,
+      order_id: data.order_id,
+    },
+    {
+      headers: corsHeaders,
+    }
+  );
 }
 
 export async function OPTIONS() {
@@ -98,6 +104,7 @@ export async function GET() {
       },
       {
         status: 200,
+        headers: corsHeaders,
       }
     );
   }

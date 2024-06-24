@@ -1,3 +1,4 @@
+import { corsHeaders } from '@/lib/corsHeaders';
 import MenuModel from '@/lib/models/menus';
 import mongoose from 'mongoose';
 import { NextResponse } from 'next/server';
@@ -7,5 +8,7 @@ export async function GET() {
 
   const data = await MenuModel.find();
 
-  return NextResponse.json(data);
+  return NextResponse.json(data, {
+    headers: corsHeaders,
+  });
 }

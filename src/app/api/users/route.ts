@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import UserModel from '@/lib/models/users';
 import { NextResponse } from 'next/server';
+import { corsHeaders } from '@/lib/corsHeaders';
 
 // ユーザー情報を取得
 export async function POST(req: Request) {
@@ -18,14 +19,20 @@ export async function POST(req: Request) {
       },
       {
         status: 500,
+        headers: corsHeaders,
       }
     );
   }
 
   // email,uuidを返還
-  return NextResponse.json({
-    email: data.email,
-    uuid: data.uuid,
-    user_name: data.user_name,
-  });
+  return NextResponse.json(
+    {
+      email: data.email,
+      uuid: data.uuid,
+      user_name: data.user_name,
+    },
+    {
+      headers: corsHeaders,
+    }
+  );
 }

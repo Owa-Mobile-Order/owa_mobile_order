@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import { NextResponse } from 'next/server';
 import HistoryModel from '@/lib/models/history';
 import UserModel from '@/lib/models/users';
+import { corsHeaders } from '@/lib/corsHeaders';
 
 // オーダー履歴の取得
 export async function GET(
@@ -21,6 +22,8 @@ export async function GET(
       },
       {
         status: 500,
+
+        headers: corsHeaders,
       }
     );
   }
@@ -38,19 +41,25 @@ export async function GET(
       },
       {
         status: 200,
+        headers: corsHeaders,
       }
     );
   }
 
   // 配列にして返還
-  return NextResponse.json({
-    history: data.map((history) => {
-      return {
-        name: history.name,
-        timestamp: history.createdAt,
-        isPending: history.pending,
-        order_id: history.order_id,
-      };
-    }),
-  });
+  return NextResponse.json(
+    {
+      history: data.map((history) => {
+        return {
+          name: history.name,
+          timestamp: history.createdAt,
+          isPending: history.pending,
+          order_id: history.order_id,
+        };
+      }),
+    },
+    {
+      headers: corsHeaders,
+    }
+  );
 }
