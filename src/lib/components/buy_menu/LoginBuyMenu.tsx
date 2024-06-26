@@ -162,7 +162,7 @@ const LoginBuyMenu = ({
       </Drawer>
 
       {/* フィードバック送信部分 */}
-      <Slide direction="bottom" in={!isFBOpen} style={{ zIndex: 999 }}>
+      <Slide direction="bottom" in={isFBOpen} style={{ zIndex: 999 }}>
         <Box color="white" mt="4" bg="teal.500" shadow="md" padding="10px">
           <Flex>
             <CloseButton onClick={onFBToggle} m={'auto 0'} />
