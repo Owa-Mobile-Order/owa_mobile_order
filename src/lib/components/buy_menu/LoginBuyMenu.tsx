@@ -19,6 +19,12 @@ import {
   TableContainer,
   Text,
   useToast,
+  Box,
+  Slide,
+  CloseButton,
+  Flex,
+  Link,
+  Spacer,
 } from '@chakra-ui/react';
 import { useSession } from 'next-auth/react';
 import React, { useState } from 'react';
@@ -43,6 +49,9 @@ const LoginBuyMenu = ({
 
   // ユーザー情報の取得
   const { data: session } = useSession();
+
+  // フィードバッグの状態
+  const {isOpen: isFBOpen, onToggle: onFBToggle} = useDisclosure()
 
   if (!session) return null;
   if (!session.user) return null;
@@ -151,6 +160,28 @@ const LoginBuyMenu = ({
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
+
+
+
+      {/* フィードバック送信部分 */}
+      <Slide direction='bottom' in={!isFBOpen} style={{ zIndex: 999 }}>
+        <Box
+          color='white'
+          mt='4'
+          bg='teal.500'
+          shadow='md'
+          padding='10px'
+        >
+          <Flex>
+            <CloseButton onClick={onFBToggle} m={"auto 0"} />
+            <Box m={"auto 0"}>
+              ご注文ありがとうございます。機能改善のために良ければフィードバックをお願いします。
+            </Box>
+            <Spacer />
+            <Button as={Link} href='feedback'>評価する</Button>
+          </Flex>
+        </Box>
+      </Slide>
     </>
   );
 };

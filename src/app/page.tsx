@@ -2,7 +2,7 @@
 import { NextPage } from 'next';
 import { Header } from '@/lib/components/Header';
 import '@/public/css/reset.css';
-import { Flex, Heading, Spinner } from '@chakra-ui/react';
+import { Box, Button, CloseButton, Flex, Heading, Link, Slide, Spacer, Spinner, useDisclosure } from '@chakra-ui/react';
 import { MenuCard } from '@/lib/components/MenuCard';
 import { useEffect, useState } from 'react';
 import '@/public/css/lastchild.css';
@@ -16,6 +16,7 @@ interface MenuItem {
 const Page: NextPage = () => {
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
   const [isLoading, setLoading] = useState(true);
+
 
   useEffect(() => {
     const fetchData = async () => {
