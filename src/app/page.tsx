@@ -2,7 +2,7 @@
 import { NextPage } from 'next';
 import { Header } from '@/lib/components/Header';
 import '@/public/css/reset.css';
-import { Box, Button, CloseButton, Flex, Heading, Link, Slide, Spacer, Spinner, useDisclosure } from '@chakra-ui/react';
+import { Flex, Heading, Spinner } from '@chakra-ui/react';
 import { MenuCard } from '@/lib/components/MenuCard';
 import { useEffect, useState } from 'react';
 import '@/public/css/lastchild.css';
@@ -16,7 +16,6 @@ interface MenuItem {
 const Page: NextPage = () => {
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
   const [isLoading, setLoading] = useState(true);
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,7 +39,7 @@ const Page: NextPage = () => {
       <Header />
       <Heading m={'40px'}>商品を購入する</Heading>
       <Flex
-        flexWrap={"wrap"}
+        flexWrap={'wrap'}
         margin={{ base: '0', md: '0 auto' }}
         width="100%"
         px={'40px'}

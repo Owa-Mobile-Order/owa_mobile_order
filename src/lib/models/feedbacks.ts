@@ -6,22 +6,25 @@ export interface FeedBacksDoc extends Document {
   img: string;
 }
 
-const feedbacksSchema = new Schema({
-  uuid: {
-    type: String,
-    required: true,
+const feedbacksSchema = new Schema(
+  {
+    uuid: {
+      type: String,
+      required: true,
+    },
+    title: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
   },
-  title: {
-    type: String,
-    required: true,
-  },
-  description: {
-    type: String,
-    required: true,
-  },
-}, {
-  timestamps: true
-});
+  {
+    timestamps: true,
+  }
+);
 
 interface FeedBacksModel extends Model<FeedBacksDoc> {}
 

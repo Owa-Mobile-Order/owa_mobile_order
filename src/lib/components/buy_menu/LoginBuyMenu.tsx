@@ -51,7 +51,7 @@ const LoginBuyMenu = ({
   const { data: session } = useSession();
 
   // フィードバッグの状態
-  const {isOpen: isFBOpen, onToggle: onFBToggle} = useDisclosure()
+  const { isOpen: isFBOpen, onToggle: onFBToggle } = useDisclosure();
 
   if (!session) return null;
   if (!session.user) return null;
@@ -161,24 +161,18 @@ const LoginBuyMenu = ({
         </DrawerContent>
       </Drawer>
 
-
-
       {/* フィードバック送信部分 */}
-      <Slide direction='bottom' in={!isFBOpen} style={{ zIndex: 999 }}>
-        <Box
-          color='white'
-          mt='4'
-          bg='teal.500'
-          shadow='md'
-          padding='10px'
-        >
+      <Slide direction="bottom" in={!isFBOpen} style={{ zIndex: 999 }}>
+        <Box color="white" mt="4" bg="teal.500" shadow="md" padding="10px">
           <Flex>
-            <CloseButton onClick={onFBToggle} m={"auto 0"} />
-            <Box m={"auto 0"}>
+            <CloseButton onClick={onFBToggle} m={'auto 0'} />
+            <Box m={'auto 0'}>
               ご注文ありがとうございます。機能改善のために良ければフィードバックをお願いします。
             </Box>
             <Spacer />
-            <Button as={Link} href='feedback'>評価する</Button>
+            <Button as={Link} href="feedback">
+              評価する
+            </Button>
           </Flex>
         </Box>
       </Slide>
