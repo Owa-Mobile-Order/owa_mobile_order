@@ -44,8 +44,8 @@ const LeftMenu = () => {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerHeader>
-            {status === 'authenticated' ? <LoginMenu /> : <LogoutMenu />}
             <DrawerCloseButton />
+            {status === 'authenticated' ? <LoginMenu /> : <LogoutMenu />}
           </DrawerHeader>
 
           <DrawerBody>
