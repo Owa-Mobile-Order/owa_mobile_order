@@ -1,0 +1,40 @@
+@import "reset.css";
+
+@font-face {
+  font-family: 'SourceHanSansJP';
+  src: url("../fonts/SourceHanSansJP-Bold.otf");
+}
+
+.container {
+  text-align: center;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.main-container {
+  text-align: center;
+  margin: auto 0;
+}
+
+.logo-area {
+  height: 300px;
+  margin: 0 auto 32px;
+  display: flex; /* Flexboxを使用して中央に配置 */
+  justify-content: center; /* 水平方向の中央揃え */
+  align-items: center; /* 垂直方向の中央揃え */
+}
+
+.logo-image {
+  height: 300px; /* 高さを固定 */
+  width: auto; /* 幅を自動調整 */
+}
+
+
+.title-area h1 {
+  font-family: "SourceHanSansJP", sans-serif;
+  font-size: 72px
+}
